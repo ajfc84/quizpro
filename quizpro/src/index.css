@@ -1,0 +1,22 @@
+/* color palette #0F3057; #00587A; #008891; #E7E7DE; */
+
+body {
+  font-family: 'Arapey', serif;
+  background-color: white;
+  line-height: 30px;
+  margin: auto;
+}
+
+#root {
+  width: 100%;
+}
+
+/* reset */
+h1 {
+  font-size: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: unset;
+}

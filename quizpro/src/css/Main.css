@@ -1,0 +1,23 @@
+/* Main */
+
+.main {
+	width: 1200px;
+	margin: 0 auto;
+	background-color: white;
+	padding-top: 50px;
+	font-size: 18px;
+}
+
+.main h1 {
+	margin-top: 0;
+	font-size: 25px;
+	text-align: center;
+	color: #00587a;
+	font-weight: bold;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
