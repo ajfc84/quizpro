@@ -3,9 +3,9 @@ import '../css/Answer.css'
 
 const Answer = (props) => {
     return (
-        <div className="box" id={props.answer[0]} key={props.answer[0]} onClick={props.setAnswer}>
+        <div className="box" id={props.choice[0]} key={props.choice[0]} onClick={props.setScore}>
             <a href="#box">
-                <h2>{props.answer[1]}</h2>
+                <h2>{props.choice[1]}</h2>
             </a>
         </div>
     )
