@@ -13,7 +13,7 @@ def show_result(request, pk):
     fig, ax = plt.subplots()
     attempts = list([str(i) for i in range(1, len(queryset) + 1)])
     scores = list([y[0] for y in queryset])
-    ax.set_title('Results')
+    #ax.set_title('Results')
     ax.set_xlabel('attempt')
     ax.set_ylabel('score')
     ax.bar(attempts, scores)

@@ -3,6 +3,7 @@ import Answer from './Answer'
 import '../css/Main.css'
 import listQuizzes from './APIService'
 import loading from '../loading.gif'
+import '../css/Challenge.css'
 
 class Challenge extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class Challenge extends Component {
         this.state = {
             currentQuiz : 0,
             quizzes : null, 
-            score : 0
+            score : 0,
+            time : new Date().getTime()
         }
         this.setScore = this.setScore.bind(this)
     }
@@ -29,11 +31,9 @@ class Challenge extends Component {
                 currentQuiz : state.currentQuiz + 1,
                 }
             if(newState.currentQuiz === state.quizzes.length)
-                props.setResult(newState.score)
+                props.setResult({'score': newState.score, 'time': new Date().getTime() - state.time})
             return newState
-        }
-        
-        )
+        })
     }
     render() {
         if(this.state.quizzes == null || this.state.currentQuiz === this.state.quizzes.length) {

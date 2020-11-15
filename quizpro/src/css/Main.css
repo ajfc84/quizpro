@@ -1,7 +1,7 @@
 /* Main */
 
 .main {
-	width: 1200px;
+	width: 1100px;
 	margin: 0 auto;
 	background-color: white;
 	padding-top: 50px;
@@ -11,9 +11,12 @@
 .main h1 {
 	margin-top: 0;
 	font-size: 25px;
-	text-align: center;
+	text-align: left;
 	color: #00587a;
 	font-weight: bold;
+}
+.main a {
+	color: #008891;
 }
 
 #challenge {

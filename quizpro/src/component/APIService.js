@@ -4,8 +4,8 @@ function listQuizzes () {
     return fetch('http://localhost:8000/api/v1/quiz/')
 }
 
-export function setResult (score) {
-    let result = {'score' : score, 'user' : 2}
+export function setResult (score, time) {
+    let result = {'score' : score, 'time' : time,  'user' : 2}
     return fetch('http://localhost:8000/api/v1/result/', {
         method : 'POST',
         headers: {
