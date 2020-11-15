@@ -22,7 +22,7 @@ def show_result(request, pk):
 
 
 class ResultCreate(generics.CreateAPIView):
-    serializer_class = ResultSerializer
     queryset = Result.objects.all()
+    serializer_class = ResultSerializer
 
 
