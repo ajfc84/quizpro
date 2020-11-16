@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Answer from './Answer'
 import '../css/Main.css'
-import listQuizzes from './APIService'
+import APIService from './APIService'
 import loading from '../loading.gif'
 import '../css/Challenge.css'
 
@@ -17,12 +17,21 @@ class Challenge extends Component {
         this.setScore = this.setScore.bind(this)
     }
     componentDidMount() {
-        listQuizzes()
-            .then(resp => resp.json())
+        APIService.listQuizzes()
             .then(
-                data => this.setState({quizzes : data}),
+                data => this.verifyData(data),
                 err => this.setState({quizzes : null})
             )
+    }
+    verifyData(data) {
+        if(data 
+            && Array.isArray(data) 
+            && data[0].hasOwnProperty('question')
+            && data[0].hasOwnProperty('choices')
+            && data[0].hasOwnProperty('answer'))
+            this.setState({quizzes : data})
+        else
+            this.setState({quizzes : null})
     }
     setScore(evt) {
         this.setState((state, props) => {
@@ -36,7 +45,8 @@ class Challenge extends Component {
         })
     }
     render() {
-        if(this.state.quizzes == null || this.state.currentQuiz === this.state.quizzes.length) {
+        if(this.state.quizzes == null 
+            || this.state.currentQuiz === this.state.quizzes.length) {
             return <div id="challenge"><img src={loading} alt="loading" /></div>
         }
         else {

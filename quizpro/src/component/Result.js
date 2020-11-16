@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {getResults, setResult} from './APIService'
+import APIService from './APIService'
 import '../css/Result.css'
 import {EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton} from 'react-share'
 
@@ -8,11 +8,10 @@ const Result = (props) => {
     const score = props.result.score
     const time = props.result.time
     useEffect(() => {
-        setResult(score, time)
+        APIService.setResult(score, time)
         .then(res => res.json())
         .then(
-            data => getResults(data.user)
-                    .then(res => res.blob())
+            data => APIService.getResults(data.user)
                     .then(
                         data => setResultsChart(URL.createObjectURL(data)),
                         err => console.log(err)
