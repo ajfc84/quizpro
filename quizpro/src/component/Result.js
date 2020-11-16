@@ -9,7 +9,6 @@ const Result = (props) => {
     const time = props.result.time
     useEffect(() => {
         APIService.setResult(score, time)
-        .then(res => res.json())
         .then(
             data => APIService.getResults(data.user)
                     .then(

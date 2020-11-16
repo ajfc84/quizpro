@@ -6,7 +6,6 @@ class APIService {
 
     static login(username, password) {
         const login = {'username' : username, 'password' : password}
-        let loggedin = false
         return fetch('http://localhost:8000/api/v1/rest-auth/login/', {
             method : 'POST',
             headers : {
@@ -19,37 +18,37 @@ class APIService {
             err => console.log(err))
     }
 
-    static listQuizzes () {
-        return fetch('http://localhost:8000/api/v1/quiz/', {
-            method : 'GET',
-            headers : {
-                'Authorization' : `Token ${this.apiToken}`
+    static async listQuizzes () {
+        const resp = await fetch('http://localhost:8000/api/v1/quiz/', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Token ${this.apiToken}`
             },
-        })
-        .then(resp => resp.json())
+        });
+        return await resp.json();
     }
 
-    static setResult (score, time) {
-        let result = {'score' : score, 'time' : time,  'user' : 2}
-        return fetch('http://localhost:8000/api/v1/result/', {
-            method : 'POST',
-            headers : {
-                'Authorization' : `Token ${this.apiToken}`, 
-                'Content-Type' : 'application/json',
+    static async setResult (score, time) {
+        let result = {'score' : score, 'time' : time}
+        const resp = await fetch('http://localhost:8000/api/v1/result/', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Token ${this.apiToken}`,
+                'Content-Type': 'application/json',
             },
-            body : JSON.stringify(result),
-        })
-        .then(resp => resp.json())
+            body: JSON.stringify(result),
+        });
+        return await resp.json();
     }
 
-    static getResults(userId) {
-        return fetch(`http://localhost:8000/api/v1/result/show/${userId}`, {
-            method : 'GET',
-            headers : {
-                'Authorization' : `Token ${this.apiToken}`
+    static async getResults(userId) {
+        const resp = await fetch(`http://localhost:8000/api/v1/result/show/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Token ${this.apiToken}`
             },
-        })
-        .then(resp => resp.blob())
+        });
+        return await resp.blob();
     }
 }
 export default APIService
